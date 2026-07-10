@@ -11,15 +11,20 @@
 -- ============================================================
 
 -- 工單 1：客服查會員
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 
 
 -- 工單 2：企業會員的課表
+CREATE INDEX IF NOT EXISTS idx_coursebookings_userid_cancelledat ON course_bookings(user_id, cancelled_at);
+
 
 
 -- 工單 3：最新購買紀錄牆
+CREATE INDEX IF NOT EXISTS idx_creditPurchases_purchaseAt ON credit_purchases(purchase_at);
 
 
 -- 工單 4：首頁「進行中課程」
+CREATE INDEX IF NOT EXISTS idx_courses_start_end ON courses(start_at, end_at);
 
 
 -- 工單 5：上週開課課程的教練報名統計（思考方向：需新增兩個索引）
